@@ -23,6 +23,17 @@ const About = props => {
           />
         </TouchableHighlight>
       </View>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.Text}>Current Location: </Text>
+        <TouchableHighlight
+          onPress={() => props.navigation.navigate("CurrentLocation")}
+        >
+          <Image
+            style={styles.tinyLogo}
+            source={require("../images/vector/Here.png")}
+          />
+        </TouchableHighlight>
+      </View>
 
       <View style={styles.buttonContainer}>
         <Button

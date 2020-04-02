@@ -4,63 +4,38 @@ import Constants from "expo-constants";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 
-export default class CurrentLocation extends Component {
-  state = {
-    location: null,
-    errorMessage: null
-  };
-
-  constructor(props) {
-    super(props);
-    if (Platform.OS === "android" && !Constants.isDevice) {
-      this.setState({
-        errorMessage:
-          "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
-      });
-    } else {
-      this._getLocationAsync();
-    }
-  }
-
-  _getLocationAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== "granted") {
-      this.setState({
-        errorMessage: "Permission to access location was denied"
-      });
-    }
-
-    let location = await Location.getCurrentPositionAsync({});
-    this.setState({ location });
-  };
-
-  render() {
-    let text = "Waiting..";
-    if (this.state.errorMessage) {
-      text = this.state.errorMessage;
-    } else if (this.state.location) {
-      text = JSON.stringify(this.state.location);
-    }
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.paragraph}>{text}</Text>
-      </View>
-    );
-  }
-}
+const CurrentLocation = props => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.Title}>Current Location</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  Title: {
+    alignItems: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "orange",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 1,
+    textShadowColor: "#000"
+  },
+  Text: {
+    alignItems: "flex-start",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "orange",
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 1,
+    textShadowColor: "#000"
+  },
   container: {
     flex: 1,
+    backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#ecf0f1"
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    textAlign: "center"
+    justifyContent: "center"
   }
 });
+export default CurrentLocation;

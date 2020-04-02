@@ -13,7 +13,7 @@ import {
 import { SPAGHETTI } from "../data/dummy-data";
 import Constants from "expo-constants";
 
-const DATA = [
+const INGREDIENTS = [
   {
     id: "1",
     title: "4 Tomatoes",
@@ -83,7 +83,7 @@ const Home = props => {
         <Text style={styles.Text}>Ingredients: {"\n"}</Text>
         <SafeAreaView style={styles.container}>
           <FlatList
-            data={DATA}
+            data={INGREDIENTS}
             renderItem={({ item }) => (
               <Item
                 id={item.id}
