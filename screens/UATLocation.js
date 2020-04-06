@@ -1,16 +1,37 @@
 import React, { Component } from "react";
-import { Platform, Text, View, StyleSheet } from "react-native";
-import Constants from "expo-constants";
-import * as Location from "expo-location";
-import * as Permissions from "expo-permissions";
+import { StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
 
-const UATLocation = props => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.Title}>UAT Location</Text>
-    </View>
-  );
-};
+class UATLocation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      region: {
+        latitude: 37.323,
+        longitude: -122.0322,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0922,
+      },
+    };
+  }
+  render() {
+    return (
+      <MapView
+        style={styles.container}
+        provider="google"
+        initialRegion={this.state.region}
+      />
+      // <View style={styles.container}>
+      //   <Text style={styles.Title}>UAT Location</Text>
+      //   <View style={styles.container}>
+
+      //   </View>
+      // </View>
+    );
+  }
+}
+
+export default UATLocation;
 
 const styles = StyleSheet.create({
   Title: {
@@ -20,7 +41,7 @@ const styles = StyleSheet.create({
     color: "orange",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 1,
-    textShadowColor: "#000"
+    textShadowColor: "#000",
   },
   Text: {
     alignItems: "flex-start",
@@ -29,13 +50,12 @@ const styles = StyleSheet.create({
     color: "orange",
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 1,
-    textShadowColor: "#000"
+    textShadowColor: "#000",
   },
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
-export default UATLocation;
