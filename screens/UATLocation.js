@@ -9,8 +9,8 @@ class UATLocation extends Component {
       region: {
         latitude: 33.37738,
         longitude: -111.976196,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0922,
+        latitudeDelta: 0.0013,
+        longitudeDelta: 0.0014,
       },
     };
   }
