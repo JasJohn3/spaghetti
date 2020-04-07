@@ -7,8 +7,8 @@ class UATLocation extends Component {
     super(props);
     this.state = {
       region: {
-        latitude: 37.323,
-        longitude: -122.0322,
+        latitude: 33.427204,
+        longitude: -111.939896,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0922,
       },
